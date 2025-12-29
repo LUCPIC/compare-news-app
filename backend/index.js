@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
@@ -11,14 +12,16 @@ const authRoutes = require('./routes/auth');
 const newsRoutes = require('./routes/news');
 
 const paymentRoutes = require('./routes/payments');
+const externalNewsRoutes = require('./routes/external-news');
 
 app.get('/', (req, res) => {
   res.send('Hello from the COMPARE app backend!');
 });
 
-app.use('/api/auth', authRoutes);
-app.use('/api/news', newsRoutes);
-app.use('/api/payments', paymentRoutes);
+app.use('/auth', authRoutes);
+app.use('/news', newsRoutes);
+app.use('/payments', paymentRoutes);
+app.use('/external-news', externalNewsRoutes);
 
 app.listen(port, () => {
   console.log(`Backend server listening at http://localhost:${port}`);
